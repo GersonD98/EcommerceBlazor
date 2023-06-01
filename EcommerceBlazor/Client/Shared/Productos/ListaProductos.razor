@@ -1,0 +1,60 @@
+﻿@using EcommerceBlazor.Shared;
+@using EcommerceBlazor.Shared.Response;
+
+
+<h3>Lista De Productos</h3>
+
+@if (Lista == null)
+{
+    <img src="https://cdn.dribbble.com/users/1787505/screenshots/7300251/shot.gif" width="100px" height="100px" />
+}
+else
+{
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Precio Unitario
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Lista)
+            {
+                <tr>
+                    <td>@item.Nombre</td>
+                    <td>@item.Categoria</td>
+                    <td>S/. @item.PrecioUnitario.ToString("N2")</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+}
+@code {
+
+    [Parameter]
+    public List<ProductoDto> Lista { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+       // await Task.Delay(2000);
+
+      /* Lista = new List<ProductoDto>
+          {
+              new ProductoDto{Id=1,Nombre="Monito24",Categoria="Monitores",PrecioUnitario=500},
+              new ProductoDto{Id=1,Nombre="Laptop Lenovo",Categoria="Computadoras",PrecioUnitario=5000},
+              new ProductoDto{Id=1,Nombre="TecladoGamer",Categoria="Periferios",PrecioUnitario=80},
+              new ProductoDto{Id=1,Nombre="Impresora HP",Categoria="Impresoras",PrecioUnitario=720}
+          };*/
+    }
+
+}
